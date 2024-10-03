@@ -7,3 +7,7 @@
 html {
   font-family: Manrope, sans-serif;
 }
+
+body {
+  @apply text-black;
+}
