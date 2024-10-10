@@ -1,6 +1,5 @@
 import { FC, useState } from 'react';
-import GirlIcon from '../../assets/icons/girl.svg';
-import ManIcon from '../../assets/icons/man.svg';
+import { GirlIcon, ManIcon } from '../../assets/icons';
 import { GenderType, SelectGenderProps } from './SelectGender.interface';
 
 const SelectGender: FC<SelectGenderProps> = ({ className = '', onClick, ...props }) => {
