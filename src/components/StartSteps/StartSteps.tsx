@@ -1,7 +1,6 @@
 import { FC, useState } from 'react';
-import ArrowIcon from '../../assets/icons/arrow.svg';
-import LogoIcon from '../../assets/icons/logo.svg';
-import TelegramIcon from '../../assets/icons/telegram.svg';
+import { ArrowIcon, LogoIcon, TelegramIcon } from '../../assets/icons';
+import { useFirstStart } from '../../hooks';
 import { AgePickerProps } from '../AgePicker/AgePicker.interface';
 import Button from '../Button';
 import { GenderType } from '../SelectGender/SelectGender.interface';
@@ -15,9 +14,15 @@ const StartSteps: FC = () => {
   const [isDisabledSex, setIsDisabledSex] = useState(true);
   const [isDisabledSexParent, setIsDisabledSexParent] = useState(true);
 
+  const { toggleIsFirstStart } = useFirstStart();
+
   const isFirstStep = step === 0;
 
   const handleSubmit = () => {
+    if (step === 3) {
+      return toggleIsFirstStart();
+    }
+
     setStep((prev) => prev + 1);
   };
 
@@ -70,7 +75,7 @@ const StartSteps: FC = () => {
 
       <Button
         icon={isFirstStep ? <TelegramIcon /> : undefined}
-        className='w-full'
+        className='w-full mt-8'
         onClick={handleSubmit}
         disabled={(step === 2 && isDisabledSex) || (step === 3 && isDisabledSexParent)}
       >
